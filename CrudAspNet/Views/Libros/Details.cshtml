@@ -1,0 +1,42 @@
+﻿@model CrudAspNet.Models.Libros
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Libros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idLibro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idLibro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreLibro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreLibro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.autor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.autor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idLibro }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

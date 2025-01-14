@@ -27,7 +27,7 @@ namespace CrudAspNet.Controllers
         {
             using (DbModels context = new DbModels())
             {
-                return View(context.Libros.Where(x => x.idLibro == id));
+                return View(context.Libros.Where(x => x.idLibro == id).FirstOrDefault());
             }
         }
 

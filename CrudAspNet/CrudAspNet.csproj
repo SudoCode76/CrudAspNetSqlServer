@@ -219,10 +219,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Libros\Index.cshtml" />
+    <Content Include="Views\Libros\Details.cshtml" />
+    <Content Include="Views\Libros\Create.cshtml" />
+    <Content Include="Views\Libros\Edit.cshtml" />
+    <Content Include="Views\Libros\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Libros\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
