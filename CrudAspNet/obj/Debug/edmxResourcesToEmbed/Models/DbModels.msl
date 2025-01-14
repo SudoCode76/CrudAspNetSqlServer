@@ -10,5 +10,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Prestamos">
+      <EntityTypeMapping TypeName="LibrosDBModel.Prestamos">
+        <MappingFragment StoreEntitySet="Prestamos">
+          <ScalarProperty Name="idPrestamo" ColumnName="idPrestamo" />
+          <ScalarProperty Name="idLibro" ColumnName="idLibro" />
+          <ScalarProperty Name="fechaPrestamo" ColumnName="fechaPrestamo" />
+          <ScalarProperty Name="fechaDevolucion" ColumnName="fechaDevolucion" />
+          <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

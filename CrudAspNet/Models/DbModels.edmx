@@ -13,8 +13,35 @@
           <Property Name="nombreLibro" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="autor" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="idPrestamo" />
+          </Key>
+          <Property Name="idPrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idLibro" Type="int" Nullable="false" />
+          <Property Name="fechaPrestamo" Type="date" Nullable="false" />
+          <Property Name="fechaDevolucion" Type="date" />
+          <Property Name="nombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Prestamos__idLib__5CD6CB2B">
+          <End Role="Libros" Type="Self.Libros" Multiplicity="1" />
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Libros">
+              <PropertyRef Name="idLibro" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="idLibro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="LibrosDBModelStoreContainer">
           <EntitySet Name="Libros" EntityType="Self.Libros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Prestamos__idLib__5CD6CB2B" Association="Self.FK__Prestamos__idLib__5CD6CB2B">
+            <End Role="Libros" EntitySet="Libros" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -28,9 +55,38 @@
           <Property Name="idLibro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreLibro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="autor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Prestamos" Relationship="Self.FK__Prestamos__idLib__5CD6CB2B" FromRole="Libros" ToRole="Prestamos" />
         </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="idPrestamo" />
+          </Key>
+          <Property Name="idPrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idLibro" Type="Int32" Nullable="false" />
+          <Property Name="fechaPrestamo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaDevolucion" Type="DateTime" Precision="0" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Libros" Relationship="Self.FK__Prestamos__idLib__5CD6CB2B" FromRole="Prestamos" ToRole="Libros" />
+        </EntityType>
+        <Association Name="FK__Prestamos__idLib__5CD6CB2B">
+          <End Role="Libros" Type="Self.Libros" Multiplicity="1" />
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Libros">
+              <PropertyRef Name="idLibro" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="idLibro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Libros" EntityType="Self.Libros" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" />
+          <AssociationSet Name="FK__Prestamos__idLib__5CD6CB2B" Association="Self.FK__Prestamos__idLib__5CD6CB2B">
+            <End Role="Libros" EntitySet="Libros" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -44,6 +100,17 @@
                 <ScalarProperty Name="idLibro" ColumnName="idLibro" />
                 <ScalarProperty Name="nombreLibro" ColumnName="nombreLibro" />
                 <ScalarProperty Name="autor" ColumnName="autor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamos">
+            <EntityTypeMapping TypeName="LibrosDBModel.Prestamos">
+              <MappingFragment StoreEntitySet="Prestamos">
+                <ScalarProperty Name="idPrestamo" ColumnName="idPrestamo" />
+                <ScalarProperty Name="idLibro" ColumnName="idLibro" />
+                <ScalarProperty Name="fechaPrestamo" ColumnName="fechaPrestamo" />
+                <ScalarProperty Name="fechaDevolucion" ColumnName="fechaDevolucion" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,7 +8,34 @@
     <Property Name="nombreLibro" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="autor" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Prestamos">
+    <Key>
+      <PropertyRef Name="idPrestamo" />
+    </Key>
+    <Property Name="idPrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idLibro" Type="int" Nullable="false" />
+    <Property Name="fechaPrestamo" Type="date" Nullable="false" />
+    <Property Name="fechaDevolucion" Type="date" />
+    <Property Name="nombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Prestamos__idLib__5CD6CB2B">
+    <End Role="Libros" Type="Self.Libros" Multiplicity="1" />
+    <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Libros">
+        <PropertyRef Name="idLibro" />
+      </Principal>
+      <Dependent Role="Prestamos">
+        <PropertyRef Name="idLibro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="LibrosDBModelStoreContainer">
     <EntitySet Name="Libros" EntityType="Self.Libros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prestamos" EntityType="Self.Prestamos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Prestamos__idLib__5CD6CB2B" Association="Self.FK__Prestamos__idLib__5CD6CB2B">
+      <End Role="Libros" EntitySet="Libros" />
+      <End Role="Prestamos" EntitySet="Prestamos" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

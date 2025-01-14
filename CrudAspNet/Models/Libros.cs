@@ -15,11 +15,18 @@ namespace CrudAspNet.Models
 
     public partial class Libros
     {
+        public Libros()
+        {
+            this.Prestamos = new HashSet<Prestamos>();
+        }
+
         [Display(Name = "#")]
         public int idLibro { get; set; }
         [Display(Name = "Nombre del libro")]
         public string nombreLibro { get; set; }
         [Display(Name = "Autor")]
         public string autor { get; set; }
+    
+        public virtual ICollection<Prestamos> Prestamos { get; set; }
     }
 }
