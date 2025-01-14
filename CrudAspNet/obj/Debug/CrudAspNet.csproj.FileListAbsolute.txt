@@ -1,0 +1,2 @@
+D:\Trabajando\Asp Net\CrudAspNet\CrudAspNet\obj\Debug\CrudAspNet.csproj.AssemblyReference.cache
+D:\Trabajando\Asp Net\CrudAspNet\CrudAspNet\obj\Debug\CrudAspNet.csproj.CoreCompileInputs.cache
